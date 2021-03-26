@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/iPod-Clone/static/css/main.a566d9a1.chunk.css",
+    "main.js": "/iPod-Clone/static/js/main.cea3341c.chunk.js",
+    "main.js.map": "/iPod-Clone/static/js/main.cea3341c.chunk.js.map",
+    "runtime-main.js": "/iPod-Clone/static/js/runtime-main.c95e3cd7.js",
+    "runtime-main.js.map": "/iPod-Clone/static/js/runtime-main.c95e3cd7.js.map",
+    "static/js/2.ded294e0.chunk.js": "/iPod-Clone/static/js/2.ded294e0.chunk.js",
+    "static/js/2.ded294e0.chunk.js.map": "/iPod-Clone/static/js/2.ded294e0.chunk.js.map",
+    "index.html": "/iPod-Clone/index.html",
+    "static/css/main.a566d9a1.chunk.css.map": "/iPod-Clone/static/css/main.a566d9a1.chunk.css.map",
+    "static/js/2.ded294e0.chunk.js.LICENSE.txt": "/iPod-Clone/static/js/2.ded294e0.chunk.js.LICENSE.txt",
+    "static/media/LoversOfTheSun.3de87a77.mp3": "/iPod-Clone/static/media/LoversOfTheSun.3de87a77.mp3",
+    "static/media/Loversonthesun.8da81b0a.jpg": "/iPod-Clone/static/media/Loversonthesun.8da81b0a.jpg",
+    "static/media/SmackThat.a48b6f75.mp3": "/iPod-Clone/static/media/SmackThat.a48b6f75.mp3",
+    "static/media/awesomeImage.741372d9.jpg": "/iPod-Clone/static/media/awesomeImage.741372d9.jpg",
+    "static/media/g1.f446cefe.jpg": "/iPod-Clone/static/media/g1.f446cefe.jpg",
+    "static/media/games.f8d03444.svg": "/iPod-Clone/static/media/games.f8d03444.svg",
+    "static/media/gta.ed928e8d.gif": "/iPod-Clone/static/media/gta.ed928e8d.gif",
+    "static/media/home.318214dc.svg": "/iPod-Clone/static/media/home.318214dc.svg",
+    "static/media/info.de844b03.svg": "/iPod-Clone/static/media/info.de844b03.svg",
+    "static/media/lpInTheEnd.5cff71b2.jpg": "/iPod-Clone/static/media/lpInTheEnd.5cff71b2.jpg",
+    "static/media/lp_InTheEnd.f600d750.mp3": "/iPod-Clone/static/media/lp_InTheEnd.f600d750.mp3",
+    "static/media/music.e3c951a3.svg": "/iPod-Clone/static/media/music.e3c951a3.svg",
+    "static/media/smackthat.8ba57521.jpg": "/iPod-Clone/static/media/smackthat.8ba57521.jpg",
+    "static/media/song.86399a37.mp3": "/iPod-Clone/static/media/song.86399a37.mp3",
+    "static/media/songs.ca65cb54.svg": "/iPod-Clone/static/media/songs.ca65cb54.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c95e3cd7.js",
+    "static/js/2.ded294e0.chunk.js",
+    "static/css/main.a566d9a1.chunk.css",
+    "static/js/main.cea3341c.chunk.js"
+  ]
+}
