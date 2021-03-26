@@ -4,9 +4,9 @@ class About extends React.Component{
 
 	render(){
 
-		const props = this.props;
+		
 		return(
-			<div style={props.style}>
+			<div style={styles.divStyle}>
 				<h1 style={styles.headingFont}>About</h1>
 
 				<ul style={styles.ul}>
@@ -60,7 +60,9 @@ class About extends React.Component{
 }
 
 const styles = {
-
+	divStyle:{
+		height: '100%'
+	},
 	headingFont:{
 		marginLeft: 5
 	},

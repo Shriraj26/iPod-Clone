@@ -9,8 +9,6 @@ class Games extends React.Component{
 			<div style={styles.div}>
 				<img src={gta} style={styles.imgStyle} alt="Funny Game GIF"/>
 			</div>
-
-			
 		);
 	}
 
@@ -19,6 +17,7 @@ class Games extends React.Component{
 const styles = {
 
 	div:{
+		borderRadius: 5,
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',

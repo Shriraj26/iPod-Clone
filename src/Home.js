@@ -14,40 +14,38 @@ class Home extends React.Component{
 		return(
 			
 			<div style={styles.maindiv}>
-
-			
 				<div style={styles.homeDiv}>
-					{/* */}
+				
 					<h2 style={styles.headingFont}>Ipod.JS</h2>
 					<ul className="ListClass" style={styles.ul}>
 						
-						<li id="0" style={ props.homeCurrLink === 0 ? (styles.liHover):((this.props.style)) }>
+						<li id="0" style={ props.homeCurrLink === 0 ? (styles.liHover):(({})) }>
 							<div style={styles.divFlex}>
 								<img alt="Home" src={home} style={styles.img}/>	
 								<p style={styles.font}>Home</p>
 							</div>
 						</li>
-						<li id="1" style={ props.homeCurrLink === 1 ? (styles.liHover):((this.props.style)) }>
+						<li id="1" style={ props.homeCurrLink === 1 ? (styles.liHover):(({})) }>
 							<div style={styles.divFlex}>
 								<img alt="Music" src={songs} style={styles.img}/>	
 								<p style={styles.font}>Music</p>
 							</div>
 						</li>
-						<li id="3" style={ props.homeCurrLink === 2 ?  (styles.liHover):(this.props.style)}>
+						<li id="3" style={ props.homeCurrLink === 2 ?  (styles.liHover):({})}>
 							<div style={styles.divFlex}>
 								<img alt="Games" src={games} style={styles.img}/>	
 								<p style={styles.font}>Games</p>
 							</div>
 						</li>
 
-						<li id="2" style={ props.homeCurrLink === 3 ?  (styles.liHover):(this.props.style)}>
+						<li id="2" style={ props.homeCurrLink === 3 ?  (styles.liHover):({})}>
 							<div style={styles.divFlex}>
 								<img alt="Songs" src={music} style={styles.img}/>	
 								<p style={styles.font}>Songs</p>
 							</div>
 						</li>
 						
-						<li id="4" style={ props.homeCurrLink === 4 ?  (styles.liHover):(this.props.style)}>
+						<li id="4" style={ props.homeCurrLink === 4 ?  (styles.liHover):({})}>
 							<div style={styles.divFlex}>
 								<img alt="About" src={about} style={styles.img}/>	
 								<p style={styles.font}>About</p>
@@ -68,7 +66,8 @@ const styles = {
 	maindiv:{
 		display:'flex',
 		flexDirection: 'row',
-		height: '100%'
+		height: '100%',
+		borderRadius: 5,
 	},
 	homeDiv:{
 		width: '50%'

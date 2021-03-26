@@ -4,7 +4,6 @@ import Home from './Home';
 import Music from './Music';
 import Songs from './Songs';
 import Games from './Games';
-// import About from './About';
 
 class ScreenComponent extends React.Component{
 
@@ -13,44 +12,41 @@ class ScreenComponent extends React.Component{
 		const props = this.props;
 		const obj = this;
 		const date = this.getDate();
-		//console.log('Props from the Main page',obj.props);
-		//console.log(obj.props.activePage);
+		
 		
 		
 		return(
 			<div style={styles.mainScreen}>
 				<div style= {styles.navbarTop}>
-					<i className="fas fa-wifi"></i>	
+					<div style={styles.displayFlex}>
+						<i className="fas fa-wifi" style={styles.wifi}></i>	
+						<p style={{marginLeft: 5}} >5G</p>
+						<i className="fas fa-signal" style={{marginLeft: 3}}></i>
+					</div>
+					
 					<div style={styles.displayFlex}>
 						<p style={{marginRight:'5px'}}>{date}</p>
-						<i className="fas fa-battery-three-quarters"></i>
+						<i className="fas fa-battery-three-quarters" style={styles.battery}></i>
 					</div>
 				</div>
 
-				{props.activePage === 'Home' && <Home homeCurrLink={obj.props.homeCurrLink}/>}
+				{props.activePage === 'Home' && <Home homeCurrLink={props.homeCurrLink}/>}
 				{props.activePage === 'Music' && <Music 
-													audio={this.props.audio} 
-													homeCurrLink={obj.props.homeCurrLink}
-													currSong= {this.props.currSong}
+													audio={props.audio} 
+													homeCurrLink={props.homeCurrLink}
+													currSong= {props.currSong}
+													playing= {props.playing}
+													songNames={props.songNames}
 												/>}
+												
 				{props.activePage === 'Songs' && <Songs 
-													currSong= {this.props.currSong} 
-													homeCurrLink={obj.props.homeCurrLink}
+													currSong= {props.currSong} 
+													homeCurrLink={props.homeCurrLink}
 												/>}
-				{props.activePage === 'About' && <About homeCurrLink={obj.props.homeCurrLink}/>}
-				{props.activePage === 'Games' && <Games homeCurrLink={obj.props.homeCurrLink}/>}
+				{props.activePage === 'About' && <About homeCurrLink={props.homeCurrLink}/>}
+				{props.activePage === 'Games' && <Games homeCurrLink={props.homeCurrLink}/>}
 				
-				{/* if(props.activePage === 'Home'){
-					<Home homeCurrLink={obj.props.homeCurrLink}/>
-				}else if(props.activePage === 'Music'){
-					<Music style={styles.mainScreen}/>
-				}else if(props.activePage === 'Games'){
-					<Games style={styles.mainScreen}/>
-				}else if(props.activePage === 'About'){
-					<About style={styles.mainScreen}/>
-				}else if(props.activePage === 'Songs'){
-					<Songs style={styles.mainScreen}/>
-				} */}
+				
 			</div>
 			);
 
@@ -62,7 +58,6 @@ class ScreenComponent extends React.Component{
 		var dd = String(today.getDate()).padStart(2, '0');
 		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 		var yyyy = today.getFullYear();
-
 		today = mm + '/' + dd + '/' + yyyy;
 		return today;
 	}
@@ -72,7 +67,7 @@ class ScreenComponent extends React.Component{
 
 const styles = {
 	mainScreen : {
-		border: '1px solid black',
+		border: '3px solid black',
 		borderRadius: 5,
 		backgroundColor: 'white',
 		height: 300,
@@ -84,12 +79,8 @@ const styles = {
 		paddingTop: '0 !important'
 	},
 	navbarTop:{
-		// backgroundColor: 'yellow',
 		backgroundColor: '#f39f86',
-		// backgroundImage: 'linear-gradient(315deg, #f39f86 0%, #f9d976 74%)',
-		// backgroundColor: '#f5f186',
 		backgroundImage: 'linear-gradient(315deg, #f5f186 0%, #9dfbc8 74%)',
-
 		marginTop: 0,
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -98,21 +89,16 @@ const styles = {
 		alignItems: 'center'
 
 	},
-	ul:{
-		listStyleType: 'none',
-
-		
-	},
-	li:{
-		
-	},
-	liHover:{
-		backgroundColor: 'blue'
-	},
 	displayFlex:{
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'baseline'	
+	},
+	wifi:{
+		color: '#4370FF'
+	},
+	battery:{
+		color: '#2EA44F'
 	}
 }
 

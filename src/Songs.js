@@ -2,6 +2,7 @@ import React from 'react';
 import ls from "./Loversonthesun.jpg";
 import sm from "./smackthat.jpg";
 import int from "./lpInTheEnd.jpg";
+import aws from "./awesomeImage.jpg";
 
 class About extends React.Component{
 
@@ -9,12 +10,12 @@ class About extends React.Component{
 		const props = this.props;
 		
 		return(
-			<div>
-				<h1>Songs</h1>
+			<div style={{height: '100%'}}>
+				<h1 style={styles.headStyle}>Songs</h1>
 				<ul style={styles.ul}>
 
 					
-					<li style={styles.li} style={ props.currSong === 0 ? (styles.liHover):((styles.li2))}>
+					<li style={ props.currSong === 0 ? (styles.liHover):({})}>
 						<div style={styles.imgDiv}>
 							<img alt="Lovers On The Sun" src={ls} style={styles.imgStyle}/>
 							<p style={styles.fontP}>Lovers On The Sun </p>
@@ -22,23 +23,24 @@ class About extends React.Component{
 						</div>	
 						
 					</li>
-					<li style={styles.li} style={ props.currSong === 1 ? (styles.liHover):((styles.li2))}>
+					
+					<li style={ props.currSong === 1 ? (styles.liHover):({})}>
 						<div style={styles.imgDiv}>
 							<img alt="Smack That" src={sm} style={styles.imgStyle}/>	
 							<p style={styles.fontP}>Smack That</p>
 						</div>
 						
 					</li>
-					<li style={styles.li} style={ props.currSong === 2 ? (styles.liHover):((styles.li2))}>
+					<li style={ props.currSong === 2 ? (styles.liHover):({})}>
 						<div style={styles.imgDiv}>
 							<img alt="Linkin Park - In The End" src={int} style={styles.imgStyle}/>	
 							<p style={styles.fontP}>Linkin Park - In the End</p>
 						</div>
 						
 					</li>					
-					<li style={styles.li} style={ props.currSong === 3 ? (styles.liHover):((styles.li2))}>
+					<li style={ props.currSong === 3 ? (styles.liHover):({})}>
 						<div style={styles.imgDiv}>
-							<img alt="Awesome Song" src="https://images.unsplash.com/photo-1505430111830-b998ef798efa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style={styles.imgStyle}/>	
+							<img alt="Awesome Songs" src={aws} style={styles.imgStyle}/>	
 							<p style={styles.fontP}>Awesome Song</p>
 						</div>
 					</li>
@@ -50,11 +52,12 @@ class About extends React.Component{
 }
 
 const styles = {
+	headStyle : {
+		marginLeft: 5,
+	},
 	ul:{
 		listStyleType: 'none',
-		paddingLeft: 0,
 		paddingTop: 5
-		
 	},
 	imgStyle:{
 		height: 50,
@@ -64,14 +67,8 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginBottom: 2
-	},
-	li:{
-		
-		
-	},
-	li2:{
-
+		marginBottom: 2,
+		paddingLeft: 5
 	},
 	liHover:{
 		backgroundColor: '#7AF7CD'

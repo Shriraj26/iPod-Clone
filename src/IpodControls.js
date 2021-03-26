@@ -1,6 +1,4 @@
 import React from 'react';
-//import ZingTouch from './ZingLib';
-//import ZingTouch from '';
 import ZingTouch from 'zingtouch';
 import ScreenComponent from './ScreenComponent';
 import audio from './LoversOfTheSun.mp3';
@@ -21,29 +19,23 @@ class IpodControls extends React.Component {
 			ctr:0,
 			audio: new Audio(audio),
 			currSong: 0,
-			playing: true		
+			playing: true,
+			songMapping: [audio, audio2, audio3, audio4],
+			songNames:['Lovers Of The Sun', 'Smack That - Akon', 'In the End - Linkin Park', 'Awesome Song']		
 		}
 	}
 	
-	componentDidMount = () => {
-		
-	}
-
 	mouseClickRotate = (event) => {
 		
 		event.preventDefault();
 
 		var obj = this;
-
 		
-
-
-		//For Home Page
 		if(obj.state.activePage === 'Home' || obj.state.activePage === 'Songs'){
 		
 
 			obj.setState({ctr: obj.state.ctr + 1});
-			console.log('Called')
+			
 			var currAngle = 0;
 			
 			var target = document.querySelector('#circle');
@@ -53,14 +45,14 @@ class IpodControls extends React.Component {
 				region.bind(target, 'rotate', function(event){
 				
 					
-					//console.log('Distance From Origin - ', event.detail.distanceFromOrigin);
+					
 					var measuredAng = event.detail.distanceFromLast;
 
 					if(measuredAng > 0){
-						//console.log(currAngle);
+						
 						currAngle ++;
 						if(currAngle === 15){
-							console.log('Increase now');
+							//console.log('Increase now');
 							currAngle = 0;
 							
 							if(obj.state.activePage === 'Home'){
@@ -97,10 +89,10 @@ class IpodControls extends React.Component {
 							
 						}
 					}else{
-						//console.log(currAngle);
+						
 						currAngle ++;
 						if(currAngle === 15){
-							console.log('Decrease now');
+							//console.log('Decrease now');
 							currAngle = 0;
 
 							if(obj.state.activePage === 'Home'){
@@ -152,27 +144,20 @@ class IpodControls extends React.Component {
 		const obj = this;
 		
 
-		if(obj.state.activePage === 'Music' /*|| obj.state.activePage === 'Songs'*/){
+		if(obj.state.activePage === 'Music'){
 			
 			
 			
-			console.log(obj.state.playing);
+			console.log('Music playing or not - ',obj.state.playing);
 			if(obj.state.playing){
-				//const song = document.querySelector('#song');
-				obj.state.playing = false;
-				console.log(obj.state.playing);
 				
-				//setInterval(this.updateProgressBar, 500);
-
-				//console.log(song);
+				obj.state.playing = false;
 				obj.state.audio.play();
 				
 			}else{
-				//clearInterval(this.updateProgressBar);
+				
 				obj.state.audio.pause();
 				obj.state.playing = true;
-				
-
 			}
 			
 		}
@@ -180,15 +165,61 @@ class IpodControls extends React.Component {
 
 	nextSong = () => {
 		const obj = this;
-		if(obj.state.activePage === 'Music'){
+		console.log(obj.state);
+
+		if(obj.state.playing === false){
+				
 			obj.state.audio.pause();
-			
-			obj.setState({
-				audio: new Audio(audio),
-				playing :true
-			});
+			obj.state.audio = '';
+			obj.state.playing = true;
+		}
+
+		if(obj.state.activePage === 'Music'){
+			let setSong;
+
+			if(obj.state.currSong < 4){
+				if(obj.state.currSong === 3){
+					setSong = 0
+					obj.setState({
+						currSong: setSong,
+						audio: new Audio(obj.state.songMapping[setSong]),
+					});	
+				}else{
+					setSong = obj.state.currSong + 1;
+					obj.setState({
+						currSong: setSong,
+						audio: new Audio(obj.state.songMapping[setSong]),
+						
+					});
+				}
+			}
 		}	
 	}
+
+	prevSong = () => {
+		const obj = this;
+		if(obj.state.activePage === 'Music'){
+			let setSong;
+
+			if(obj.state.currSong > -1){
+				if(obj.state.currSong === 0){
+					setSong = 3
+					obj.setState({
+						currSong: setSong,
+						audio: new Audio(obj.state.songMapping[setSong]),
+					});	
+				}else{
+					setSong = obj.state.currSong - 1;
+					obj.setState({
+						currSong: setSong,
+						audio: new Audio(obj.state.songMapping[setSong]),
+						
+					});
+				}
+			}
+		}	
+	}
+
 	middleButtonClick = (event) =>   {
 
 		event.preventDefault();
@@ -196,75 +227,74 @@ class IpodControls extends React.Component {
 		const obj = this;
 		
 		
-		console.log(obj.state);
 		
 		if(obj.state.activePage==='Home'){
 			if(obj.state.homeCurrLink===0){
-				console.log('hrererer');
+		
 				obj.setState({
 					activePage: 'Home'
 				})
 	
 				
 			}else if(obj.state.homeCurrLink===1){
-				console.log('hrererer');
+				
 				obj.setState({
 					activePage: 'Music'
 				})
 	
 				
 			}else if(obj.state.homeCurrLink===2){
-				// console.log('hrererer');
+				
 				obj.setState({
 					activePage: 'Games'
 				})
 	
 				
 			}else if(obj.state.homeCurrLink===3){
-				// console.log('hrererer');
+				
 				obj.setState({
 					activePage: 'Songs'
 				})
 	
 				
 			}else if(obj.state.homeCurrLink===4){
-				// console.log('hrererer');
+				
 				obj.setState({
 					activePage: 'About'
 				})
 	
 				
 			}
-			console.log(obj.state);
+			
 		
 		}else if(obj.state.activePage==='Songs'){
-			console.log(obj.state.currSong);
+			
 
 			if(obj.state.currSong === 0){
 				obj.setState({
 					audio: new Audio(audio),
 					activePage: 'Music'
 				});
-				//this.songPlayPause();
+				
 				
 			}else if(obj.state.currSong === 1){
 				obj.setState({
 					audio: new Audio(audio2),
 					activePage: 'Music'
 				});
-				this.songPlayPause();
+				
 			}else if(obj.state.currSong === 2){
 				obj.setState({
 					audio: new Audio(audio3),
 					activePage: 'Music'
 				});
-				this.songPlayPause();
+				
 			}else if(obj.state.currSong === 3){
 				obj.setState({
 					audio: new Audio(audio4),
 					activePage: 'Music'
 				});
-				this.songPlayPause();
+				
 			}
 			
 		}
@@ -278,7 +308,7 @@ class IpodControls extends React.Component {
 
 		const obj = this;
 
-		console.log(obj.state.activePage);
+		
 
 		if(obj.state.activePage !== 'Home'){
 			obj.setState({
@@ -300,6 +330,8 @@ class IpodControls extends React.Component {
 					activePage= {this.state.activePage}
 					audio= {this.state.audio}
 					currSong= {this.state.currSong}
+					playing= {this.state.playing}
+					songNames={this.state.songNames}
 				/>
 
 				<div id="circle" 
@@ -318,7 +350,7 @@ class IpodControls extends React.Component {
 						</div>
 						
 					</div>
-					<div id="left" style={styles.left}>
+					<div id="left" style={styles.left} onClick={this.prevSong}>
 						<i className="fas fa-backward iconSize" style={styles.iconSize}></i>
 					</div>
 					<div id="right" style={styles.right} onClick={this.nextSong}>
@@ -334,16 +366,12 @@ class IpodControls extends React.Component {
 			
 		  );
 	}
-
-	
-
-	
 	
 }
 
 const styles = {
 	main:{
-		backgroundColor: '##3f0d12',
+		backgroundColor: '#3f0d12',
 		backgroundImage: 'linear-gradient(315deg, #3f0d12 0%, #a71d31 74%)',
 		height: 600,
 		width: 350,
@@ -366,7 +394,8 @@ const styles = {
 		backgroundColor: 'white',
 		position:'relative',
 		borderRadius: '50%',
-		border: '1px solid black'
+		border: '1px solid black',
+		cursor: 'pointer',
 	},
 	
 	up:{
@@ -396,6 +425,7 @@ const styles = {
 		top: '50%',
 		transform: 'translateY(-50%)',
 		color: '#9F1B2E',
+		cursor: 'pointer',
 	},
 	
 	right:{
@@ -405,6 +435,7 @@ const styles = {
 		right: 0,
 		marginRight: 15,
 		color: '#9F1B2E',
+		cursor: 'pointer',
 	},
 
 	middle:{
@@ -414,11 +445,11 @@ const styles = {
 		transform: 'translate(-50%, -50%)',
 		height: 120,
 		width: 120,
-		backgroundColor: 'lightgrey',
 		backgroundColor: '#3f0d12',
 		backgroundImage: 'linear-gradient(315deg, #3f0d12 0%, #a71d31 74%)',
 		borderRadius: '50%',
-		border: '1px solid black'
+		border: '1px solid black',
+		cursor: 'pointer',
 	},
 
 	iconSize:{

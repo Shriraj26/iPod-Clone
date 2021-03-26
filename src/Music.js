@@ -1,8 +1,8 @@
 import React from 'react';
-// import ss from './menuSound.wav'
 import lsImg from './Loversonthesun.jpg'
 import smImg from './smackthat.jpg'
 import lpImg from './lpInTheEnd.jpg'
+import aws from "./awesomeImage.jpg";
 
 class Music extends React.Component{
 
@@ -10,11 +10,11 @@ class Music extends React.Component{
 		super();
 		this.state = {
 			progressBar : '',
-			songName: ['Lovers Of The Sun', 'Smack That - Akon', 'In the End - Linkin Park', 'Awesome Song']
 		}
 	}
 
 	componentDidMount = () => {
+		
 		this.state.progressBar = document.querySelector('#progress-bar'); // element where progress bar appears
 		setInterval(this.updateProgressBarValue, 500);
 	}
@@ -43,16 +43,16 @@ class Music extends React.Component{
 		}else if(props.currSong === 2){
 			songImg = lpImg
 		}else if(props.currSong === 3){
-			songImg = "https://images.unsplash.com/photo-1505430111830-b998ef798efa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+			songImg = aws
 		}
 
 
 		return(
-			<div style={props.style} style={styles.div}>
+			<div style={styles.div}>
 				<audio src="/.menuSound.wav" id="song"></audio>
 				{/* <p>jj</p> */}
-				<img alt={this.state.songName[props.currSong]} style={styles.imgMusic} src={songImg} id="thumbnail" />
-				<p style={styles.pstyle}>{this.state.songName[props.currSong]}</p>
+				<img alt={props.songNames[props.currSong]} style={styles.imgMusic} src={songImg} id="thumbnail" />
+				<p style={styles.pstyle}>{props.songNames[props.currSong]}</p>
 				<input style={styles.input}
 					type="range"
 					id="progress-bar"
@@ -72,6 +72,7 @@ class Music extends React.Component{
 
 const styles = {
 	div:{
+		borderRadius: 5,
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
